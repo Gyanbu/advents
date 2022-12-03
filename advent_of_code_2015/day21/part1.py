@@ -32,13 +32,13 @@ armors = {
 }
 
 rings = {
-    'none': [0, 0, 0],
-    'dmg1': [25, 1, 0],
-    'dmg2': [50, 2, 0],
-    'dmg3': [100, 3, 0],
-    'def1': [20, 0, 1],
-    'def2': [40, 0, 2],
-    'def3': [80, 0, 3]
+    'none': [0, 'armor', 0],
+    'dmg1': [25, 'damage', 1],
+    'dmg2': [50, 'damage', 2],
+    'dmg3': [100, 'damage', 3],
+    'def1': [20, 'armor', 1],
+    'def2': [40, 'armor', 2],
+    'def3': [80, 'armor', 3]
 }
 
 
@@ -71,32 +71,38 @@ def fight(player, boss):
         # print()
         fight_tick(player_cpy, boss_cpy)
         if boss_cpy['health'] <= 0:
-            print('Player won!')
+            # print('Player won!')
             return True
         if player_cpy['health'] <= 0:
-            print('Player was defeated!')
+            # print('Player was defeated!')
             return False
 
 
 lowest_budget = float('inf')
 for weapon in weapons.values():
     player_cpy = deepcopy(player)
-    player_cpy['damage'] = weapon[1]
-    player_cpy['cost'] = weapon[0]
+    player_cpy['damage'] += weapon[1]
+    player_cpy['cost'] += weapon[0]
 
     for armor in armors.values():
         player_cpy2 = deepcopy(player_cpy)
         player_cpy2['armor'] += armor[2]
         player_cpy2['cost'] += armor[0]
 
-        for ring in rings:
-            player_cpy3 = deepcopy(player_cpy)
-            player_cpy3['armor'] += armor[2]
-            player_cpy3['cost'] += armor[0]
+        for ring in rings.values():
+            player_cpy3 = deepcopy(player_cpy2)
+            player_cpy3['ring'] = ring
+            player_cpy3[ring[1]] += ring[2]
+            player_cpy3['cost'] += ring[0]
 
-
-    # if player_cpy['cost'] < lowest_budget and fight(player_cpy, boss):
-    #     lowest_budget = player_cpy['cost']
-    #     print(lowest_budget)
+            for ring2 in rings.values():
+                if player_cpy3['ring'] != ring2 or player_cpy3['ring'] == 'none':
+                    player_cpy4 = deepcopy(player_cpy3)
+                    player_cpy4[ring2[1]] += ring2[2]
+                    player_cpy4['cost'] += ring2[0]
+                    # print(player_cpy4)
+                    if player_cpy4['cost'] < lowest_budget and fight(player_cpy4, boss):
+                        lowest_budget = player_cpy4['cost']
+                        print(lowest_budget)
 # fight(player, boss)
 
