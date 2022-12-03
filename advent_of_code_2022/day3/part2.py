@@ -1,10 +1,10 @@
 import string
 
-# with open('data.txt', 'rt') as f:
-#     data = [line.strip() for line in f.readlines()]
-#     # data = f.readlines()
-# print(data)
-data = ['vJrwpWtwJgWrhcsFMMfFFhFp', 'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL', 'PmmdzqPrVvPwwTWBwg']  # 18
+with open('data.txt', 'rt') as f:
+    data = [line.strip() for line in f.readlines()]
+    # data = f.readlines()
+print(data)
+# data = ['vJrwpWtwJgWrhcsFMMfFFhFp', 'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL', 'PmmdzqPrVvPwwTWBwg']  # 18
 
 
 alphabet = string.ascii_letters
