@@ -9,11 +9,11 @@ print(data)
 alphabet = string.ascii_letters
 bags = []
 for bag in data:
-    buf = [[], []]
+    buf = []
     for letter in bag[:len(bag) // 2]:
-        buf[0].append(alphabet.index(letter))
+        buf.append(alphabet.index(letter))
     for letter in bag[len(bag) // 2:]:
-        buf[1].append(alphabet.index(letter))
+        buf.append(alphabet.index(letter))
     bags.append(buf)
 
 
