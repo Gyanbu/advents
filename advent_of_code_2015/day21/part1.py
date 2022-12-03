@@ -103,6 +103,4 @@ for weapon in weapons.values():
                     # print(player_cpy4)
                     if player_cpy4['cost'] < lowest_budget and fight(player_cpy4, boss):
                         lowest_budget = player_cpy4['cost']
-                        print(lowest_budget)
-# fight(player, boss)
-
+print(lowest_budget)
