@@ -1,9 +1,10 @@
 import string
 
-with open('data.txt', 'rt') as f:
-    data = [line.strip() for line in f.readlines()]
-    # data = f.readlines()
-print(data)
+# with open('data.txt', 'rt') as f:
+#     data = [line.strip() for line in f.readlines()]
+#     # data = f.readlines()
+# print(data)
+data = ['vJrwpWtwJgWrhcsFMMfFFhFp', 'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL', 'PmmdzqPrVvPwwTWBwg']  # 18
 
 
 alphabet = string.ascii_letters
@@ -23,5 +24,5 @@ for elf_group in range(len(bags) // 3):
     for item in elf_group[0]:
         if item in elf_group[1] and item in elf_group[2]:
             answer += item + 1
-            continue
+            break
 print(answer)
