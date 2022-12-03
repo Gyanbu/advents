@@ -1,9 +1,10 @@
 import string
 
-with open('data.txt', 'rt') as f:
-    data = [line.strip() for line in f.readlines()]
-    # data = f.readlines()
-print(data)
+# with open('data.txt', 'rt') as f:
+#     data = [line.strip() for line in f.readlines()]
+#     # data = f.readlines()
+# print(data)
+data = ['vJrwpWtwJgWrhcsFMMfFFhFp', 'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL', 'PmmdzqPrVvPwwTWBwg', 'wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn', 'ttgJtRGJQctTZtZT', 'CrZsJsPPZsGzwwsLwLmpwMDw']  # 157
 
 
 alphabet = string.ascii_letters
@@ -22,6 +23,7 @@ answer = 0
 for bag in bags:
     for item in bag[0]:
         if item in bag[1]:
+            print(item)
             answer += item + 1
             break
 print(answer)
