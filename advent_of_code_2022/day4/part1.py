@@ -15,4 +15,6 @@ for group in data:
             buf[i] += f'{n},'
     if buf[0] in buf[1] or buf[1] in buf[0]:
         answer += 1
+    else:
+        pass
 print(answer)
