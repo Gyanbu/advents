@@ -78,7 +78,7 @@ def fight(player, boss):
             return False
 
 
-lowest_budget = float('inf')
+lowest_budget = float('-inf')
 for weapon in weapons.values():
     player_cpy = deepcopy(player)
     player_cpy['damage'] += weapon[1]
@@ -101,6 +101,7 @@ for weapon in weapons.values():
                     player_cpy4[ring2[1]] += ring2[2]
                     player_cpy4['cost'] += ring2[0]
                     # print(player_cpy4)
-                if player_cpy4['cost'] < lowest_budget and fight(player_cpy4, boss):
+                if player_cpy4['cost'] > lowest_budget and not fight(player_cpy4, boss):
+                    print(player_cpy4['cost'])
                     lowest_budget = player_cpy4['cost']
 print(lowest_budget)
