@@ -76,9 +76,8 @@ for y in range(len(array2d)):
         # print(array2d[x][y], end='')
         if tree_visible(x, y, array2d):
             answer += 1
-            print('V', end='')
-        else:
-            print('H', end='')
-        pass
+        #     print('V', end='')
+        # else:
+        #     print('H', end='')
 print()
 print(answer)
