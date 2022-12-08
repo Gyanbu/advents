@@ -1,7 +1,7 @@
 with open('data.txt', 'rt') as f:
     data = [line.strip() for line in f.readlines()]
     # data = f.readlines()
-print(data)
+# print(data)
 
 # with open('test_data.txt', 'rt') as f:
 #     data = [line.strip() for line in f.readlines()]
@@ -71,7 +71,7 @@ array2d = create_2d_array(data)
 
 answer = 0
 for y in range(len(array2d)):
-    print()
+    # print()
     for x in range(len(array2d)):
         # print(array2d[x][y], end='')
         if tree_visible(x, y, array2d):
@@ -79,5 +79,5 @@ for y in range(len(array2d)):
         #     print('V', end='')
         # else:
         #     print('H', end='')
-print()
+# print()
 print(answer)
