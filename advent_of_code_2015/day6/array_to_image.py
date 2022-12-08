@@ -1,7 +1,7 @@
 from PIL import Image
 
 
-def covert(array):
+def convert(array):
     x_len = len(array[0])
     y_len = len(array)
     image = Image.new('1', (x_len, y_len))

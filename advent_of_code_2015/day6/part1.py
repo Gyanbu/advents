@@ -47,5 +47,5 @@ for row in array:
             answer += 1
 print(answer)
 
-image = array_to_image.covert(array)
+image = array_to_image.convert(array)
 image.save('part1.png', 'PNG')
