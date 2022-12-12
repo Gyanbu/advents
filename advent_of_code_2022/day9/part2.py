@@ -23,9 +23,9 @@ def move_head(position, direction):
 
 
 def move_tail(head, tail):
-    distance = sqrt((tail[0] - head[0]) ** 2 + (tail[1] - head[1]) ** 2)
-    if distance < 1.5:
-        return
+    # distance = sqrt((tail[0] - head[0]) ** 2 + (tail[1] - head[1]) ** 2)
+    # if distance < 1.5:
+    #     return
 
     x_diff = tail[0] - head[0]
     y_diff = tail[1] - head[1]
