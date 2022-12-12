@@ -44,6 +44,7 @@ def move_tail(head, tail):
         tail[1] += 1
         tail[0] = head[0]
 
+
 for i, instruction in enumerate(data):
     data[i] = instruction.split(' ')
     data[i][1] = int(data[i][1])
