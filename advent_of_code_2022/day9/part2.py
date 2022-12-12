@@ -1,14 +1,14 @@
 from math import sqrt
 
-# with open('data.txt', 'rt') as f:
-#     data = [line.strip() for line in f.readlines()]
-#     # data = f.readlines()
-# print(data)
-
 with open('data.txt', 'rt') as f:
     data = [line.strip() for line in f.readlines()]
     # data = f.readlines()
 print(data)
+
+# with open('test_data2.txt', 'rt') as f:
+#     data = [line.strip() for line in f.readlines()]
+#     # data = f.readlines()
+# print(data)
 
 
 def move_head(position, direction):
