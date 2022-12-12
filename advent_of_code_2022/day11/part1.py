@@ -1,12 +1,12 @@
-# with open('data.txt', 'rt') as f:
-#     data = [line.strip() for line in f.readlines()]
-#     # data = f.readlines()
-# print(data)
-
-with open('test_data.txt', 'rt') as f:
+with open('data.txt', 'rt') as f:
     data = [line.strip() for line in f.readlines()]
     # data = f.readlines()
 print(data)
+
+# with open('test_data.txt', 'rt') as f:
+#     data = [line.strip() for line in f.readlines()]
+#     # data = f.readlines()
+# print(data)
 
 
 m = 0
@@ -43,3 +43,30 @@ for line in data:
         monkeys[m]['False'] = int(line[26:])
 print(monkeys)
 
+monkey_business = [0] * len(monkeys)
+for _ in range(20):
+    for m, monkey in enumerate(monkeys):
+        for _ in range(len(monkey['Items'])):
+            monkey_business[m] += 1
+
+            item = monkey['Items'].pop(0)
+            if monkey['Operation'][0] == '*':
+                if monkey['Operation'][1] == 'old':
+                    item *= item
+                else:
+                    item *= monkey['Operation'][1]
+            elif monkey['Operation'][0] == '+':
+                if monkey['Operation'][1] == 'old':
+                    item += item
+                else:
+                    item += monkey['Operation'][1]
+
+            item //= 3
+
+            if item % monkey['Test'] == 0:
+                monkeys[monkey['True']]['Items'].append(item)
+            else:
+                monkeys[monkey['False']]['Items'].append(item)
+
+monkey_business = sorted(monkey_business, reverse=True)
+print(monkey_business[0] * monkey_business[1])
