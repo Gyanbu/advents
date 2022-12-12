@@ -9,7 +9,7 @@ print(data)
 # print(data)
 
 
-instructions = [0, 0]
+instructions = [0]
 for line in data:
     if 'addx' in line:
         instructions.append(int(line[5:]))
@@ -30,9 +30,10 @@ for instruction in instructions:
 print(buffer)
 
 
-answer = 0
 for i, x in enumerate(buffer):
-    if (i == 20 or (i - 20) % 40 == 0) and i != 0:
-        answer += i * x
-        print(f'{i}: {x = }, {answer = }, {i * x}')
-print(answer)
+    if i % 40 == 0:
+        print()
+    if i % 40 in (x - 1, x, x + 1):
+        print('#', end='')
+    else:
+        print('.', end='')
