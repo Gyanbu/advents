@@ -5,7 +5,7 @@ from math import sqrt
 #     # data = f.readlines()
 # print(data)
 
-with open('test_data2.txt', 'rt') as f:
+with open('data.txt', 'rt') as f:
     data = [line.strip() for line in f.readlines()]
     # data = f.readlines()
 print(data)
@@ -30,6 +30,23 @@ def move_tail(head, tail):
     x_diff = tail[0] - head[0]
     y_diff = tail[1] - head[1]
 
+    if x_diff == 2 and y_diff == 2:
+        tail[0] -= 1
+        tail[1] -= 1
+        return
+    if x_diff == 2 and y_diff == -2:
+        tail[0] -= 1
+        tail[1] += 1
+        return
+    if x_diff == -2 and y_diff == 2:
+        tail[0] += 1
+        tail[1] -= 1
+        return
+    if x_diff == -2 and y_diff == -2:
+        tail[0] += 1
+        tail[1] += 1
+        return
+
     if x_diff == 2:
         tail[0] -= 1
         tail[1] = head[1]
@@ -43,6 +60,7 @@ def move_tail(head, tail):
     if y_diff == -2:
         tail[1] += 1
         tail[0] = head[0]
+
 
 for i, instruction in enumerate(data):
     data[i] = instruction.split(' ')
@@ -73,6 +91,7 @@ for instruction in data:
         move_tail(tail6, tail7)
         move_tail(tail7, tail8)
         move_tail(tail8, tail9)
+        print(tail9)
         if tail9 not in answer:
             answer.append(tail9.copy())
 print(len(answer))
