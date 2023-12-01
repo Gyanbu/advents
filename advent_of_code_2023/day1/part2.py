@@ -16,8 +16,8 @@ for l in range(len(data)):
                 break
     data[l] = buf
 
-result = 0
-for line in data:
+
+def first_and_last_number(line):
     first = None
     last = None
     for char in line:
@@ -30,6 +30,10 @@ for line in data:
     if last is None:
         last = first
 
-    result += first * 10 + last
-    # print(first * 10 + last)
+    return first * 10 + last
+
+
+result = 0
+for line in data:
+    result += first_and_last_number(line)
 print(result)

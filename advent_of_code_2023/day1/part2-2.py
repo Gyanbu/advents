@@ -4,8 +4,7 @@ with open('data.txt', 'rt') as f:
 
 nums = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 
-result = 0
-for line in data:
+def first_and_last_number(line):
     first = [len(line), None]
     last = [0, None]
     for num in nums:
@@ -29,5 +28,10 @@ for line in data:
             last[1] = int(char)
             break
 
-    result += first[1] * 10 + last[1]
+    return first[1] * 10 + last[1]
+
+
+result = 0
+for line in data:
+    result += first_and_last_number(line)
 print(result)
