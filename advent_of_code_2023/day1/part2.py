@@ -31,5 +31,5 @@ for line in data:
         last = first
 
     result += first * 10 + last
-    print(first * 10 + last)
+    # print(first * 10 + last)
 print(result)
