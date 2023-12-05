@@ -1,5 +1,5 @@
-# with open('data.txt', 'rt') as f:
-with open('test_data.txt', 'rt') as f:
+with open('data.txt', 'rt') as f:
+# with open('test_data.txt', 'rt') as f:
     data = [line.strip() for line in f.readlines()]
 
 seeds = [int(num) for num in data[0].split()[1:]]
