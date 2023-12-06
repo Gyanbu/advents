@@ -13,7 +13,7 @@ class Car:
 
     def how_many_new_records(self):
         result = 0
-        for i in range(1, self.race_duration - 1):
+        for i in range(1, self.race_duration):
             if self.wind_up(i) > self.record:
                 result += 1
         return result
