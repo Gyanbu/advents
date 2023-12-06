@@ -24,7 +24,7 @@ for s, seed in enumerate(seeds):
     for map_instruction in maps:
         print(seed, end='->')
         for num in sorted(map_instruction.keys(), reverse=True):
-            if seed >= num and seed <= num + map_instruction[num][1] - 1:
+            if num <= seed <= num + map_instruction[num][1] - 1:
                 # print(f'{seed}: {num} {map_instruction[num][0]} {map_instruction[num][1]}')
                 shift = map_instruction[num][0] - num
                 seed += shift

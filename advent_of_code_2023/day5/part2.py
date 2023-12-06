@@ -35,7 +35,7 @@ while True:
         for num in sorted(map_instruction.keys()):
             if seed < num:
                 break
-            elif seed >= num and seed <= num + map_instruction[num][1] - 1:
+            elif num <= seed <= num + map_instruction[num][1] - 1:
                 shift = num - map_instruction[num][0]
                 seed -= shift
                 break
