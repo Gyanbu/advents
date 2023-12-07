@@ -19,7 +19,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>>{
 
     let seeds: Vec<i64> = data[0].split_whitespace().skip(1).map(|num| num.parse().unwrap()).collect();
     println!("seeds: {:?}", seeds);
-    let seed_ranges: Vec<(i64, i64)> = seeds.chunks(2).map(|chunk| (chunk[0], chunk[1])).collect();    println!("seed_ranges: {:?}", seed_ranges);
+    let seed_ranges: Vec<(i64, i64)> = seeds.chunks(2).map(|chunk| (chunk[0], chunk[1])).collect();
+    println!("seed_ranges: {:?}", seed_ranges);
 
     let data: Vec<_> = data.iter().skip(3).collect();
     let mut maps: Vec<Vec<Instruction>> = Vec::new();
