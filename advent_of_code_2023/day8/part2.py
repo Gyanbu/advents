@@ -22,12 +22,22 @@ for node in data[2:]:
     nodes[node[0:3]] = (node[7:10], node[12:15])
 print(nodes)
 
+locations = []
+for location in nodes.keys():
+    if location[2] == 'A':
+        locations.append(location)
+print(locations)
+
+
 step = 0
-location = 'AAA'
-destination = 'ZZZ'
+destination = 'Z'
 for direction in direction_gen(directions):
     step += 1
-    location = nodes[location][direction]
-    if location == 'ZZZ':
+    all_z = True
+    for l, location in enumerate(locations):
+        locations[l] = nodes[location][direction]
+        if location[2] != destination:
+            all_z = False
+    if all_z:
         break
-print(step)
+    print(step - 1)
