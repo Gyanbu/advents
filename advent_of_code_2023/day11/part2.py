@@ -1,7 +1,8 @@
-# with open('data.txt', 'rt') as f:
-with open('test_data.txt', 'rt') as f:
+with open('data.txt', 'rt') as f:
+# with open('test_data.txt', 'rt') as f:
     data = [line.strip() for line in f.readlines()]
 
+years = 1000000 - 1
 data = [list(row) for row in data]
 
 
@@ -22,15 +23,6 @@ for r, row in enumerate(data):
 # print(row_empty)
 # print(col_empty)
 
-for r in range(len(row_empty) - 1, -1, -1):
-    if row_empty[r]:
-        data.insert(r, ['.'] * len(data[0]))
-
-for c in range(len(col_empty) - 1, -1, -1):
-    if col_empty[c]:
-        for row in data:
-            row.insert(c, '.')
-
 galaxies = []
 for r, row in enumerate(data):
     for c, char in enumerate(row):
@@ -39,26 +31,22 @@ for r, row in enumerate(data):
 print(galaxies)
 
 
-def get_distance(p1_org, p2_org):
-    p1 = p1_org.copy()
-    p2 = p2_org.copy()
-    distance = 0
-    while p1 != p2:
-        x_diff = p2[0] - p1[0]
-        y_diff = p2[1] - p1[1]
+for offset in range(len(row_empty) - 1, -1, -1):
+    if row_empty[offset]:
+        for galaxy in galaxies:
+            if galaxy[0] > offset:
+                galaxy[0] += years
 
-        if abs(x_diff) > abs(y_diff):
-            if x_diff > 0:
-                p1[0] += 1
-            else:
-                p1[0] -= 1
-        else:
-            if y_diff > 0:
-                p1[1] += 1
-            else:
-                p1[1] -= 1
+for offset in range(len(col_empty) - 1, -1, -1):
+    if col_empty[offset]:
+        for galaxy in galaxies:
+            if galaxy[1] > offset:
+                galaxy[1] += years
 
-        distance += 1
+# print_board()
+
+def get_distance(p1, p2):
+    distance = max(p1[0], p2[0]) - min(p1[0], p2[0]) + max(p1[1], p2[1]) - min(p1[1], p2[1])
     return distance
 
 
