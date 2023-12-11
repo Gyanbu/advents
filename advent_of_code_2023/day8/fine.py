@@ -1,6 +1,29 @@
 import math
 
 
+def prime_factors(n):
+    buf = []
+    # Print the number of two's that divide n
+    while n % 2 == 0:
+        buf.append(2)
+        n = n // 2
+
+    # n must be odd at this point
+    # so a skip of 2 ( i = i + 2) can be used
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
+
+        # while i divides n , print i ad divide n
+        while n % i == 0:
+            buf.append(i)
+            n = n // i
+
+    # Condition if n is a prime
+    # number greater than 2
+    if n > 2:
+        buf.append(n)
+    return buf
+
+
 with open('data.txt', 'rt') as f:
 # with open('test_data.txt', 'rt') as f:
     data = [line.strip() for line in f.readlines()]
@@ -71,7 +94,9 @@ for ghost in locations:
     # I guess last item in loop is z?
 
 pre_loop = 1
+mods = []
 for ghost in paths:
+    mods.append(prime_factors(len(paths[ghost][1])))
     if pre_loop != len(paths[ghost][0]):
         pre_loop *= len(paths[ghost][0])
 
@@ -81,4 +106,14 @@ for ghost in paths:
     locations.append(paths[ghost][2])
     steps.append(len(paths[ghost][1]))
 print(locations)
-print(math.lcm(*locations))
+
+locations = [4008361276149, 4008113587298, 4008361283737, 4008361283737, 4008361295119, 4008361289699]
+while True:
+    highest = max(locations)
+    for l, location in enumerate(locations):
+        if location < highest:
+            locations[l] += steps[l]
+    print(locations)
+    if len(set(locations)) == 1:
+        break
+print(locations[0])
